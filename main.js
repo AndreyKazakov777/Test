@@ -71,5 +71,64 @@
 // };
 // sayHi2('чушня');
 
-const sayHi2 = (name) => console.log(`"Привет, ${name}!"`);
-sayHi2('чушня');
+// const sayHi2 = (name) => console.log(`"Привет, ${name}!"`);
+// sayHi2('чушня');
+
+//--------------- Promise-----------------
+
+const checkRooms = new Promise(function (resolve, reject) {
+    setTimeout(function(){
+        console.log("Проверяем номера в отеле...");
+        const availableRooms = true;
+        console.log(availableRooms);
+
+        if (availableRooms) {
+            resolve("Номера есть!");
+        } else {
+            reject ("Номеров нет.");
+        }
+
+
+    }, 1000)
+});
+
+checkRooms.then(function(data){
+    return new Promise(function(resolve, reject){
+        setTimeout(function (){
+            console.log("----then 1----");
+            console.log("Ответ на предыдущем шаге:", data);
+            console.log("Проверяем авиабилеты...");
+            const availableTickets = true;
+
+            if (availableTickets) {
+                let message = "Билеты есть";
+                resolve(message);
+            } else {
+                let message = "Билетов нет";
+                reject(message)
+            }
+
+        }, 2000)
+    }); 
+}).then(function(data){
+    console.log("----then 2----");
+    console.log("Ответ на предыдущем шаге:", data);
+    console.log("Едем в отпуск!");
+}).catch(function(data){
+    console.log("----catch----");
+    console.log("Ответ на предыдущем шаге:", data);
+    console.log("Отпуск отменяется :(");
+})
+
+
+
+
+// checkRooms.then(function(data){
+//     console.log("----then 1----");
+//     console.log("Ответ на предыдущем шаге:", data);
+//     console.log("Едем в отпуск! :)");
+// }).catch(function(data){
+//     console.log("----catch----");
+//     console.log("Ответ на предыдущем шаге:", data);
+//     console.log("Отпуск отменяется :(");
+// })
