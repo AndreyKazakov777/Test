@@ -245,17 +245,61 @@
 
 // ---------------- 15. Объекты обход циклом for in (не путать с for of) -----
 
-const person = {
-    userName: "Mark",
-    age: 30,
-    isMarried: false,
-    sayHi: function (name) {
-        console.log(`Привет, ${name}! Меня зовут ${this.userName}!`);
-    },
-};
+// const person = {
+//     userName: "Mark",
+//     age: 30,
+//     isMarried: false,
+//     sayHi: function (name) {
+//         console.log(`Привет, ${name}! Меня зовут ${this.userName}!`);
+//     },
+// };
 
-for (let key in person) {
-    // console.log(key);
-    console.log(key, ':', person[key]);
+// for (let key in person) {
+//     // console.log(key);
+//     console.log(key, ':', person[key]);
 
-}
+// }
+
+// --------------- 17. Классы. Конструкторы объектов -------------
+// Представим ситуацию, когда нам надо описать несколько одинаковых объектов
+
+// const person1 = {
+//     userName: "Mark",
+//     age: 30,
+//     isMarried: false,
+//     sayHi: function (name) {
+//         console.log(`Привет, ${name}! Меня зовут ${this.userName}!`);
+//     },
+// };
+
+// const person2 = {
+//     userName: "Pavel",
+//     age: 28,
+//     isMarried: true,
+//     sayHi: function () {
+//         console.log(`Привет, ${name}! Меня зовут ${this.userName}!`)
+//     },
+// };
+
+// class Person {
+//     constructor (userName, age, isMarried) {
+//         this.userName = userName;
+//         this.age = age;
+//         this.isMarried = isMarried;
+//     }
+//     sayHi(name) {
+//         console.log(`Привет, ${name}! Меня зовут ${this.userName}!`);
+//     }
+// };
+
+// const person1 = new Person('Mark', 30, false);
+// const person2 = new Person ('Pavel', 28, true);
+// // console.log(person1);
+// console.log(person2);
+
+// person1.sayHi("Bob");
+
+
+// ---------- Выбор DOM элементов ----------------
+
+document.querySelector('h2');
