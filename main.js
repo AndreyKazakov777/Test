@@ -301,5 +301,237 @@
 
 
 // ---------- Выбор DOM элементов ----------------
+// Выбор одного элемента DOM по селектору
+// document.querySelector('selector');
 
-document.querySelector('h2');
+// document.querySelector('h2');
+// document.querySelector('h2').classList.add('red');
+
+// const heading2 = document.querySelector('h2');
+// heading2.classList.add('green');
+
+
+// Выбор коллекции элементов
+// const headings = document.querySelectorAll('h2');
+// console.log(headings);
+
+// headings.classList.add("red-text"); - не может добавить св-во к каждому элементу, т.к. это не массив, а NodeList 
+
+// Поэтому мы перебираем их с помощью for of
+// for (let item of headings) {
+//     console.log(item);
+//     item.classList.add("red-text");
+// }
+
+// const paragraphs = document.querySelectorAll('p');
+// for (let par of paragraphs) {
+//     par.classList.add("green-text");
+// };
+
+// paragraphs.forEach((par) => {
+//     par.classList.add("red-text")
+// });
+// paragraphs.forEach(par);
+
+// Также есть следующие методы
+// document.getElementsByClassName(''); выбор по CSS классу
+// document.getElementsByTagName(''); выбор по Тегу
+// document.getElementById(''); Выбор по ID
+
+// ========== Работа с SCC классами ===============
+/*
+element.classList.add('')
+.add()
+.remove()
+.toggle()
+.contains()
+*/
+
+// const heading = document.querySelector('h2');
+// console.log(heading);
+
+// heading.classList.add('red-text');
+// heading.classList.remove('red-text');
+
+// heading.classList.toggle("red-text");
+// heading.classList.toggle("red-text");
+
+// heading.classList.contains('red-text');
+
+// =============Работа с атрибутами=============
+/*
+getAttribute(attrName) - возвращает значение указанного атрибута
+setAttribute(name, value) - добавляет указанные атрибуты и его значение к элементу
+hasAttribute(attrName) - возвращает true при наличии у элемента указанного атрибута
+removeAttribute(attrName) - удаляет указанный атрибут
+*/
+
+// const img = document.querySelector('#logo');
+// const srcValue = img.getAttribute('src');
+// console.log(srcValue);
+
+// img.setAttribute('src', './img/php.png');
+// img.setAttribute('width', '200');
+// img.src = "./img/js.png";
+
+// const button = document.querySelector("#button");
+// button.setAttribute('value', "Отправить нах");
+// button.value = 'Новый текст для кнопки';
+// console.log(button);
+
+// =============== Работа с прослушкой событий ============
+
+// const button = document.querySelector("#button");
+// const img = document.querySelector('#logo');
+// button.value = "Удалить";
+// img.setAttribute('height', '200');
+
+// button.addEventListener("click", function() {
+//     // console.log("Click!");
+//     img.remove();
+
+// });
+// Если только одно действие по элементу, то можно использовать "onclick"
+// button.onclick = function () {
+//     console.log("Click 1!");
+
+
+// =============== Работа с прослушкой событий 2 ============
+
+// const inputText = document.querySelector("#input-text");
+// const textBlock = document.querySelector("#text-block");
+
+// inputText.addEventListener('input', function() {
+//     // console.log("Привет, уроды!");
+//     console.log(inputText.value);
+//     textBlock.innerText = inputText.value;
+// });
+
+// =============== Работа с прослушкой событий Event ============
+
+// const list = document.querySelector("#list");
+
+// list.addEventListener("click", function (event) {
+//     // console.log(this);
+//     console.log(event);
+//     console.log(event.target);
+// });
+
+// ================ Работа с элементами  ================
+/*
+Создать элемент
+document.createElement('tag-name');
+
+Изменить HTML содержимое внутри элемента
+element.innerHTML = " "
+
+Изменить Текстовое содержимое внутри элемента
+node.innerText = " "
+
+Клонирование элемента
+node.cloneNode() // true  с внутренним содержимым (текст и теги), false - без внутреннего содержимого
+
+Вставить элемент внутрь другого элемента 
+element.append()
+
+Удалять элемент через метод
+element.remove()
+*/
+
+//Выбор контейнера
+// const container = document.querySelector('#elementsContainer');
+
+// Создание заголовка
+// const newHeader = document.createElement('h1');
+// newHeader.innerText = 'Новый заголовок';
+// container.append(newHeader);
+
+// //Копирование шапки
+// const mainHeader = document.querySelector('header');
+// const headerCopy = mainHeader.cloneNode(true);
+// container.append(headerCopy);
+
+// // Вставка разметки через строки
+// const htmlExample = '<h2>Ещё один заголовок</h2>';
+// container.insertAdjacentHTML('beforeend', htmlExample);
+
+// // Вставка разметки через шаблонные строки
+// const title = "Текст заголовка2";
+// const htmlExample2 = `<h2>${title}</h2>`;
+// container.insertAdjacentHTML('beforeend', htmlExample2);
+
+// =============== ToDo список задач ==============
+
+// const todoList = document.querySelector("#todo-list");
+// const todoForm = document.querySelector("#todo-form");
+// const todoInput = document.querySelector("#todo-input");
+
+// todoForm.addEventListener("submit", formHandler);
+
+// function formHandler(event) {
+//     event.preventDefault();
+    
+//     // Получаем название задачи из поля ввода(инпут)
+// const taskText = todoInput.value;
+
+// /*   
+// //Создаём тег li через разметку
+// const li = `<li>${taskText}</li>`;
+
+// //Добавляем разметку на страницу
+// todoList.insertAdjacentHTML('beforeend', li); 
+// */
+
+// // Создаём тег li с помощью создания элемента
+// const newTask = document.createElement('li');
+// newTask.innerText = taskText;
+
+// // Создаём кнопку удалить
+// const deleteBtn = document.createElement('button');
+// deleteBtn.setAttribute('role', 'button');
+// deleteBtn.innerText = "Удалить";
+// deleteBtn.style['margin-left'] = "15px";
+// newTask.append(deleteBtn);
+
+// //Добавляем событие по клику
+// deleteBtn.addEventListener('click', deleteTask);
+
+// function deleteTask () {
+// newTask.remove();
+// };
+
+// //Добавляем элемент на страницу
+// todoList.append(newTask);
+
+// //Очищаем полу ввода
+// todoInput.value = '';
+
+// //Фокус на поле ввода
+// todoInput.focus();
+// }
+
+// =========== setInterval =================
+
+// const timerIntervalID = setInterval (function() {
+//     console.log('Fired!');
+// }, 1000);
+
+// clearInterval(timerIntervalID);
+
+// =============== setTimeout ================
+
+// timerId = setTimeout(function(){
+//     console.log("setTimeout");
+// }, 2000);
+// clearInterval(timerId);
+
+// =========== setInterval + setTimeout =============
+
+const SI = setInterval(function(){
+    console.log('SI');
+}, 1000);
+
+setTimeout(function(){
+    clearInterval(SI);
+}, 5000);
+
