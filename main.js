@@ -527,11 +527,35 @@ element.remove()
 
 // =========== setInterval + setTimeout =============
 
-const SI = setInterval(function(){
-    console.log('SI');
-}, 1000);
+// const SI = setInterval(function(){
+//     console.log('SI');
+// }, 1000);
 
-setTimeout(function(){
-    clearInterval(SI);
-}, 5000);
+// setTimeout(function(){
+//     clearInterval(SI);
+// }, 5000);
 
+// ============== Секундомер ==============
+
+const counterElement = document.querySelector('#counter');
+let counter = 0;
+let timerID;
+
+
+
+// Старт
+const  btnStart = document.querySelector("#start");
+btnStart.onclick = function () {
+   timerID = setInterval(() => {
+    counter++;
+    // clearInterval(counter);
+    counterElement.innerText = counter;
+}, 1000); 
+}
+
+// Стоп
+const btnStop = document.querySelector('#pause');
+btnStop.onclick = function() {
+    console.log(btnStop);
+    clearInterval(timerID);
+}; 
