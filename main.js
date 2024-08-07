@@ -537,25 +537,94 @@ element.remove()
 
 // ============== Секундомер ==============
 
-const counterElement = document.querySelector('#counter');
-let counter = 0;
-let timerID;
+// const counterElement = document.querySelector('#counter');
+// let counter = 0;
+// let timerID;
 
 
 
-// Старт
-const  btnStart = document.querySelector("#start");
-btnStart.onclick = function () {
-   timerID = setInterval(() => {
-    counter++;
-    // clearInterval(counter);
-    counterElement.innerText = counter;
-}, 1000); 
+// // Старт
+// const  btnStart = document.querySelector("#start");
+// btnStart.onclick = function () {
+//    timerID = setInterval(() => {
+//     counter++;
+//     // console.log(timerID);
+//     counterElement.innerText = counter;
+// }, 1000); 
+// }
+
+// // Стоп
+// const btnStop = document.querySelector('#pause');
+// btnStop.onclick = function() {
+//     // console.log(btnStop);
+//     clearInterval(timerID);
+// }; 
+
+// //  Сброс
+// const btnReset = document.querySelector('#reset');
+// btnReset.onclick = function() {
+//     // console.log('ok');
+//     counter = 0;
+//     counterElement.innerText = counter;
+//     clearInterval(timerID);
+// }
+
+// ================= Callback. Callback hell =================
+// setTimeout(function(){
+//     console.log('Step 1');
+// },2000);
+
+// setTimeout(function(){
+//     console.log('Step 2');
+// },1500); 
+
+// setTimeout(function(){
+//     console.log('Step 3');
+// },1000);
+
+
+// setTimeout(function(){
+//     console.log('Step 1');
+//     setTimeout(function(){
+//         console.log('Step 2');
+//         setTimeout(function(){
+//          console.log('Step 3');
+//         },1000);
+//     },1500); 
+// },2000);
+
+
+// Проверить номера в отеле
+// Проверить билеты
+
+function checkRooms(){
+    setTimeout(() => {
+        console.log('Проверяем номера в отеле...');
+        const availableRooms = true;
+        
+        
+    if(availableRooms) {
+        let message = "Номера есть";
+        sumbitVacation(message);        
+      } else { 
+        let message = "Номеров НЕТ";
+        cancelVacation(message);        
+     }
+
+    }, 1000)
+    
+}
+checkRooms();
+
+
+function cancelVacation(message){
+    console.log('----- cancelVacation ------');
+    console.log('Ответ на предыдущем шаге:', message);
+    console.log('Отпуск отменется((');
 }
 
-// Стоп
-const btnStop = document.querySelector('#pause');
-btnStop.onclick = function() {
-    console.log(btnStop);
-    clearInterval(timerID);
-}; 
+function sumbitVacation(message){
+    console.log('----- sumbitVacation ------');
+    console.log('Ответ на предыдущем шаге:', message);
+    console.log('Едем в отпуск!(');
+}
